@@ -3,22 +3,22 @@ import { SupplierClientService } from "./supplier-client/SupplierClientService"
 import { ClientTypeEnum } from "./enums/client-type.enum"
 const apiKey = '758f571e0be2d57e@m128349';
 
-const productService = new ProductService();
+const productService = new ProductService(apiKey);
 const productCreate = {
-    productSKU:"000011",
-    productDescription:"Red Hat",
-    productSellingPrice:100.99,
+    productSKU:"000022",
+    productDescription:"Blue Hat",
+    productSellingPrice:99,
     productPurchasePrice:55.09
 };
 const productUpdate = {
     productID: 27,
     productSKU:"1112300",
-    productDescription:"T-shirtrr"
+    productDescription:"Shoes HR"
 };
-/*productService.insertProduct(productCreate,apiKey).then(function (response){
+/*productService.insertProduct(productCreate).then(function (response){
     console.log(response);
 });
-productService.updateProduct(productUpdate,apiKey).then(function (response){
+productService.updateProduct(productUpdate).then(function (response){
     console.log(response);
 });*/
 
