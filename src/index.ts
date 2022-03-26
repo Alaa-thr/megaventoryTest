@@ -3,6 +3,7 @@ import { SupplierClientService } from "./supplier-client/SupplierClientService"
 import { ClientTypeEnum } from "./enums/client-type.enum"
 import { MVRecordActionEnum } from "./enums/mv-record-action.enum";
 import { InventoryLocationService } from "./inventory-location/inventoryLocationService";
+import { TaxService } from "./tax/TaxService";
 
 const apiKey = '758f571e0be2d57e@m128349';
 const mvRecordActionInsert= MVRecordActionEnum.INSERT;
@@ -67,5 +68,24 @@ const updateInventoryLocation = {
              console.log(response);
 });
 inventoryLocation.insertOrUpdateInventoryLocation(updateInventoryLocation,mvRecordActionUpdate).then(function (response){
+    console.log(response);
+});*/
+
+const tax = new TaxService(apiKey);
+const createTax = {
+    taxName: "VAT2",
+    taxDescription: "VAT GR",
+    taxValue: 25,
+}
+const updateTax = {
+    taxID: 5,
+    taxName: "VAT3",
+    taxDescription: "SAT GR",
+    taxValue: 23,
+}
+/*tax.insertOrUpdateTax(createTax, mvRecordActionInsert).then(function (response){
+             console.log(response);
+});
+tax.insertOrUpdateTax(updateTax,mvRecordActionUpdate).then(function (response){
     console.log(response);
 });*/
