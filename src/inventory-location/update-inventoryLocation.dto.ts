@@ -1,4 +1,3 @@
-import { ClientTypeEnum } from "../enums/client-type.enum";
 
 export class UpdateInventoryLocationDto {
 
