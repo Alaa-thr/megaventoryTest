@@ -1,30 +1,34 @@
 import { ProductService } from "./product/productService";
 import { SupplierClientService } from "./supplier-client/SupplierClientService"
 import { ClientTypeEnum } from "./enums/client-type.enum"
-const apiKey = '758f571e0be2d57e@m128349';
+import { MVRecordActionEnum } from "./enums/mv-record-action.enum";
+import { InventoryLocationService } from "./inventory-location/inventoryLocationService";
 
-const productService = new ProductService(apiKey);
+const apiKey = '758f571e0be2d57e@m128349';
+const mvRecordActionInsert= MVRecordActionEnum.INSERT;
+const mvRecordActionUpdate= MVRecordActionEnum.UPDATE;
+
+const product = new ProductService(apiKey);
 const productCreate = {
-    productSKU:"000022",
-    productDescription:"Blue Hat",
-    productSellingPrice:99,
-    productPurchasePrice:55.09
+    productSKU:"1112256",
+    productDescription:"Nike shoes",
+    productSellingPrice:99.99,
+    productPurchasePrice:44.99
 };
 const productUpdate = {
     productID: 27,
-    productSKU:"1112300",
-    productDescription:"Shoes HR"
+    productSKU:"1112304",
+    productDescription:"T-shirt HR"
 };
-/*productService.insertProduct(productCreate).then(function (response){
+/*product.insertOrUpdateProduct(productCreate,mvRecordActionInsert).then(function (response){
     console.log(response);
 });
-productService.updateProduct(productUpdate).then(function (response){
+product.insertOrUpdateProduct(productUpdate,mvRecordActionUpdate).then(function (response){
     console.log(response);
 });*/
 
 
 const supplierClient = new SupplierClientService(apiKey);
-
 const createSupplerClient = {
     supplierClientName: "babis",
     supplierClientEmail: "babis@exampletest.com",
@@ -34,15 +38,34 @@ const createSupplerClient = {
 }
 const updateSupplerClient = {
     supplierClientId: 5,
-    supplierClientName: "alaa",
-    supplierClientEmail: "babis@exampletest.com",
+    supplierClientName: "chiraz",
+    supplierClientEmail: "chiraz@exampletest.com",
     supplierClientShippingAddress1: "Example 2, Piraeus ",
     supplierClientPhone1: "1235698967",
     supplierClientType: ClientTypeEnum.SUPPLIER_CLIENT
 }
-/*supplierClient.insertSupplierClient(createSupplerClient).then(function (response){
+/*supplierClient.insertOrUpdateSupplierClient(createSupplerClient, mvRecordActionInsert).then(function (response){
              console.log(response);
 });
-supplierClient.updateSupplierClient(updateSupplerClient).then(function (response){
+supplierClient.insertOrUpdateSupplierClient(updateSupplerClient,mvRecordActionUpdate).then(function (response){
+    console.log(response);
+});*/
+
+const inventoryLocation = new InventoryLocationService(apiKey);
+const createInventoryLocation = {
+    inventoryLocationAbbreviation: "Test",
+    inventoryLocationName: "Test Project Location",
+    inventoryLocationAddress: "Example 20, Athens "
+}
+const updateInventoryLocation = {
+    inventoryLocationID: 3,
+    inventoryLocationAbbreviation: "Te3",
+    inventoryLocationName: "Test Project Location 3",
+    inventoryLocationAddress: "Example 23, Atica "
+}
+/*inventoryLocation.insertOrUpdateInventoryLocation(createInventoryLocation, mvRecordActionInsert).then(function (response){
+             console.log(response);
+});
+inventoryLocation.insertOrUpdateInventoryLocation(updateInventoryLocation,mvRecordActionUpdate).then(function (response){
     console.log(response);
 });*/
