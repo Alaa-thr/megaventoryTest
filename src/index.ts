@@ -4,6 +4,7 @@ import { ClientTypeEnum } from "./enums/client-type.enum"
 import { MVRecordActionEnum } from "./enums/mv-record-action.enum";
 import { InventoryLocationService } from "./inventory-location/inventoryLocationService";
 import { TaxService } from "./tax/TaxService";
+import { DiscountService } from "./discount/discountService";
 
 const apiKey = '758f571e0be2d57e@m128349';
 const mvRecordActionInsert= MVRecordActionEnum.INSERT;
@@ -87,5 +88,24 @@ const updateTax = {
              console.log(response);
 });
 tax.insertOrUpdateTax(updateTax,mvRecordActionUpdate).then(function (response){
+    console.log(response);
+});*/
+
+const discount = new DiscountService(apiKey);
+const createDiscount = {
+    discountName: "Loyalty 17",
+    discountDescription: "Loyalty Customer Discount",
+    discountValue: 58,
+}
+const updateDiscount = {
+    discountID: 6,
+    discountName: "Loyalty",
+    discountDescription: "Loyalty Customer Discount 7",
+    discountValue: 50,
+}
+/*discount.insertOrUpdateDiscount(createDiscount, mvRecordActionInsert).then(function (response){
+             console.log(response);
+});
+discount.insertOrUpdateDiscount(updateDiscount,mvRecordActionUpdate).then(function (response){
     console.log(response);
 });*/
