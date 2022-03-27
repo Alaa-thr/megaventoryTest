@@ -5,10 +5,13 @@ import { MVRecordActionEnum } from "./enums/mv-record-action.enum";
 import { InventoryLocationService } from "./inventory-location/inventoryLocationService";
 import { TaxService } from "./tax/TaxService";
 import { DiscountService } from "./discount/discountService";
+import { SalesOrderService } from "./sales-order/salesOrderService";
+import { SalesOrderStatusEnum } from "./enums/sales-order-status.enum";
 
 const apiKey = '758f571e0be2d57e@m128349';
 const mvRecordActionInsert= MVRecordActionEnum.INSERT;
 const mvRecordActionUpdate= MVRecordActionEnum.UPDATE;
+const salesOrderStatusVerified = SalesOrderStatusEnum.VERIFIED;
 
 const product = new ProductService(apiKey);
 const productCreate = {
@@ -93,15 +96,15 @@ tax.insertOrUpdateTax(updateTax,mvRecordActionUpdate).then(function (response){
 
 const discount = new DiscountService(apiKey);
 const createDiscount = {
-    discountName: "Loyalty 17",
+    discountName: "Loyalty1",
     discountDescription: "Loyalty Customer Discount",
-    discountValue: 58,
+    discountValue: 51,
 }
 const updateDiscount = {
-    discountID: 6,
+    discountID: 7,
     discountName: "Loyalty",
-    discountDescription: "Loyalty Customer Discount 7",
-    discountValue: 50,
+    discountDescription: "Loyalty Customer Discount 1",
+    discountValue: 58,
 }
 /*discount.insertOrUpdateDiscount(createDiscount, mvRecordActionInsert).then(function (response){
              console.log(response);
@@ -109,3 +112,72 @@ const updateDiscount = {
 discount.insertOrUpdateDiscount(updateDiscount,mvRecordActionUpdate).then(function (response){
     console.log(response);
 });*/
+
+
+const salesOrder = new SalesOrderService(apiKey);
+
+const salesOrderRequiredData = {
+    tax:[
+        {
+            fieldName: "TaxName",
+            searchOperator: "Equals",
+            searchValue: "VAT",
+        },
+        {
+            andOr: "And",
+            fieldName: "TaxValue",
+            searchOperator: "Equals",
+            searchValue: "24",
+    
+        }
+    ],
+    supplierClient:[
+        {
+            fieldName: "SupplierClientType",
+            searchOperator: "Equals",
+            searchValue: ClientTypeEnum.CLIENT,
+        },
+        {
+            andOr: "And",
+            fieldName: "SupplierClientName",
+            searchOperator: "Equals",
+            searchValue: "babis",
+    
+        }
+    ],
+    inventoryLocation:[
+        {
+            fieldName: "InventoryLocationAbbreviation",
+            searchOperator: "Equals",
+            searchValue: "Test",
+        }
+    ],
+    discount:[
+        {
+            fieldName: "discountName",
+            searchOperator: "Equals",
+            searchValue: "Loyalty",
+        },
+        {
+            andOr: "And",
+            fieldName: "discountValue",
+            searchOperator: "Equals",
+            searchValue: 50,
+        }
+    ]
+}
+const entities = {
+    tax: tax,
+    supplierClient: supplierClient,
+    inventoryLocation: inventoryLocation,
+    discount: discount
+};
+
+salesOrder.getSalesOrderRequiredDataID(salesOrderRequiredData, entities).then(function(response){
+
+    salesOrder.insertOrUpdateSalesOrder(response,mvRecordActionInsert).then(function(response){
+        console.log(response);
+    })
+});
+
+

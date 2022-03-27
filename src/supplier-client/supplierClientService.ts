@@ -5,11 +5,13 @@ import { UpdateSupplierClientDto } from "./update-supplierClient.dto";
 
 export class SupplierClientService { 
    
-    url:string  ;
-    apiKey: string
+    urlInsertOrUpdate:string;
+    urlGet:string;
+    apiKey: string;
 
     constructor(apiKey:string){
-        this.url= 'https://api.megaventory.com/v2017a/SupplierClient/SupplierClientUpdate'; 
+        this.urlInsertOrUpdate= 'https://api.megaventory.com/v2017a/SupplierClient/SupplierClientUpdate';
+        this.urlGet= 'https://api.megaventory.com/v2017a/SupplierClient/SupplierClientGet'; 
         this.apiKey = apiKey; 
     }
 
@@ -17,12 +19,23 @@ export class SupplierClientService {
        
         const APIKEY = this.apiKey;
         const data = {APIKEY, mvSupplierClient, mvRecordAction}
-        const result: any = await axios.post(this.url,data)
+        const result: any = await axios.post(this.urlInsertOrUpdate,data)
         .catch(function (error) {
             return {"error":error};
         });
         return {"response":result.data};
     }
+
+    async getSupplierClient(Filters: Object){
+
+        const APIKEY = this.apiKey;
+        const data = {APIKEY, Filters};
+        const result: any = await axios.post(this.urlGet,data)
+        .catch(function (error) {
+            return {"error":error};
+        });
+        return {"response":result.data};
+    }  
 }
 
 
