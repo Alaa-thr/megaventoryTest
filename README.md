@@ -4,6 +4,9 @@ In this file you will find the explination of the project.
 
 In this project there's 4 folders, earch one is for each services besides to the enums folder.
 
+index.ts FILE:
+    - has the tests of all the function in each service.
+
 PRODUCT:
     - Product Service:
         - we have 2 attributes:
@@ -135,3 +138,13 @@ SALES ORDER:
                 # inventoryLocationData.
                 # discountData.
             * and at the end, will return the constant data, and use this constant as a parameter in the function insertOrUpdateSalesOrder to create the salesOrder(see in index.ts).
+
+ENUMS: (we can add new types easly and use them with no changing in code)
+    - ClientTypeEnum: has the types of the client "SUPPLIER_CLIENT" OR "CLIENT".
+    - SalesOrderStatusEnum: has some of the types of the sales order status "VALID_STATUS" OR "PENDING" ...ect.
+    - MVRecordActionEnum: has some of the types of the recordAction "INSERT", "UPDATE"...ect.
+
+SCRIPTS (in package.json): (I added them to make things easy and don't wast time)
+    - build => to compile the file index.ts.
+    - start => to execute the file index.ts.
+    - build_start => to execute both cmd "build" and "start" at the same time.
