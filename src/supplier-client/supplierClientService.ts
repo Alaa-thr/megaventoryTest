@@ -1,7 +1,7 @@
 import axios from "axios";
 import { MVRecordActionEnum } from "../enums/mv-record-action.enum";
 import { CreateSupplierClientDto } from "./dtos/create-supplierClient.dto";
-import { UpdateSupplierClientDto } from "./update-supplierClient.dto";
+import { UpdateSupplierClientDto } from "./dtos/update-supplierClient.dto";
 
 export class SupplierClientService { 
    

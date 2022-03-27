@@ -177,7 +177,7 @@ salesOrder.getSalesOrderRequiredDataID(salesOrderRequiredData, entities).then(fu
 
     salesOrder.insertOrUpdateSalesOrder(response,mvRecordActionInsert).then(function(response){
         console.log(response);
-    })
+    });
 });
 
 

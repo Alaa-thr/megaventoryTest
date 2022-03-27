@@ -1,7 +1,7 @@
 import axios from "axios";
 import { MVRecordActionEnum } from "../enums/mv-record-action.enum";
 import { CreateProductDto } from "./dtos/create-product.dto";
-import { UpdateProductDto } from "./update-product.dto";
+import { UpdateProductDto } from "./dtos/update-product.dto";
 
 export class ProductService { 
    
