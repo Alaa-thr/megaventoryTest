@@ -1,4 +1,4 @@
-import { ClientTypeEnum } from "../enums/client-type.enum";
+import { ClientTypeEnum } from "../../enums/client-type.enum";
 
 export class UpdateSupplierClientDto {
 

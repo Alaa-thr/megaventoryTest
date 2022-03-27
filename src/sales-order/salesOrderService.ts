@@ -1,9 +1,8 @@
 import axios from "axios";
 import { MVRecordActionEnum } from "../enums/mv-record-action.enum";
 import { SalesOrderStatusEnum } from "../enums/sales-order-status.enum";
-import { TaxService } from "../tax/TaxService";
-import { CreateSalesOrderDto } from "./create-salesOrder.dto";
-import { UpdateSalesOrderDto } from "./update-salesOrder.dto";
+import { CreateSalesOrderDto } from "./dtos/create-salesOrder.dto";
+import { UpdateSalesOrderDto } from "./dtos/update-salesOrder.dto";
 
 export class SalesOrderService { 
    
@@ -19,7 +18,6 @@ export class SalesOrderService {
 
         const APIKEY = this.apiKey;
         const data = {APIKEY, mvSalesOrder, mvRecordAction}
-        console.log(mvSalesOrder);
         const result: any = await axios.post(this.url,data)
         .catch(function (error) { 
             return {"error":error};

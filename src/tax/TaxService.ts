@@ -1,7 +1,7 @@
 import axios from "axios";
 import { MVRecordActionEnum } from "../enums/mv-record-action.enum";
-import { CreateTaxDto } from "./create-tax.dto";
-import { UpdateTaxDto } from "./update-tax.dto";
+import { CreateTaxDto } from "./dtos/create-tax.dto";
+import { UpdateTaxDto } from "./dtos/update-tax.dto";
 
 export class TaxService { 
    
@@ -20,7 +20,7 @@ export class TaxService {
         const APIKEY = this.apiKey;
         const data = {APIKEY, mvTax, mvRecordAction};
         const result: any = await axios.post(this.urlInsertOrUpdate,data)
-        .catch(function (error) { // is not entering to it at all cuz all the status is 200
+        .catch(function (error) {
             return {"error":error};
         });
         return {"response":result.data};

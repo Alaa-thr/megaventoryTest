@@ -1,6 +1,6 @@
 import axios from "axios";
 import { MVRecordActionEnum } from "../enums/mv-record-action.enum";
-import { CreateInventoryLocationDto } from "./create-inventoryLocation.dto";
+import { CreateInventoryLocationDto } from "./dtos/create-inventoryLocation.dto";
 import { UpdateInventoryLocationDto } from "./update-inventoryLocation.dto";
 
 export class InventoryLocationService { 
