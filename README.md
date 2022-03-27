@@ -148,3 +148,4 @@ SCRIPTS (in package.json): (I added them to make things easy and don't wast time
 - build => to compile the file index.ts.
 - start => to execute the file index.ts.
 - build_start => to execute both cmd "build" and "start" at the same time.
+
