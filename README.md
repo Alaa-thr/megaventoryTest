@@ -88,7 +88,7 @@ TAX:
             - result.
     - getTax function:
         * is the responsible of getting a tax according to some filters.
-        * has 1 parameter which is an object that contains the filters to get a specific tax.(a tax has a unique ID and unique unique (Name with Value) => to get a specific tax).
+        * has 1 parameter which is an object that contains the filters to get a specific tax.(a tax has a unique ID and unique (Name with Value) => to get a specific tax).
 
 DISCOUNT:
 - Discount Service:
@@ -108,7 +108,7 @@ DISCOUNT:
             - result.
     - getDiscount function:
         * is the responsible of getting a discount according to some filters.
-        * has 1 parameter which is an object that contains the filters to get a specific tax.(a discount has a unique ID and unique unique (Name with Value) => to get a specific discount).
+        * has 1 parameter which is an object that contains the filters to get a specific tax.(a discount has a unique ID and unique (Name with Value) => to get a specific discount).
 
 SALES ORDER:
 - SalesOrder Service:
@@ -138,6 +138,9 @@ SALES ORDER:
             - inventoryLocationData.
             - discountData.
         * and at the end, will return the constant data, and use this constant as a parameter in the function insertOrUpdateSalesOrder to create the salesOrder(see in index.ts).
+
+SERVICE UTILS:
+- is a class that has the shared functions between all services.
 
 ENUMS: (we can add new types easly and use them with no changing in code)
 - ClientTypeEnum: has the types of the client "SUPPLIER_CLIENT" OR "CLIENT".
