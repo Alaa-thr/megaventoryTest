@@ -1,18 +1,15 @@
 import axios from "axios";
 import { MVRecordActionEnum } from "../enums/mv-record-action.enum";
+import { ServiceUtils } from "../utils/service-utils";
 import { CreateSupplierClientDto } from "./dtos/create-supplierClient.dto";
 import { UpdateSupplierClientDto } from "./dtos/update-supplierClient.dto";
 
-export class SupplierClientService { 
-   
-    urlInsertOrUpdate:string;
-    urlGet:string;
-    apiKey: string;
+export class SupplierClientService extends ServiceUtils{ 
 
     constructor(apiKey:string){
+        super(apiKey);
         this.urlInsertOrUpdate= 'https://api.megaventory.com/v2017a/SupplierClient/SupplierClientUpdate';
-        this.urlGet= 'https://api.megaventory.com/v2017a/SupplierClient/SupplierClientGet'; 
-        this.apiKey = apiKey; 
+        this.urlGet= 'https://api.megaventory.com/v2017a/SupplierClient/SupplierClientGet';
     }
 
     async insertOrUpdateSupplierClient(mvSupplierClient: UpdateSupplierClientDto | CreateSupplierClientDto , mvRecordAction: MVRecordActionEnum){
@@ -20,10 +17,7 @@ export class SupplierClientService {
         const APIKEY = this.apiKey;
         const data = {APIKEY, mvSupplierClient, mvRecordAction}
         const result: any = await axios.post(this.urlInsertOrUpdate,data)
-        .catch(function (error) {
-            return {"error":error};
-        });
-        return {"response":result.data};
+        return this.getResultData(result);
     }
 
     async getSupplierClient(Filters: Object){
@@ -31,10 +25,7 @@ export class SupplierClientService {
         const APIKEY = this.apiKey;
         const data = {APIKEY, Filters};
         const result: any = await axios.post(this.urlGet,data)
-        .catch(function (error) {
-            return {"error":error};
-        });
-        return {"response":result.data};
+        return this.getResultData(result);
     }  
 }
 

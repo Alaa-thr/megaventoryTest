@@ -3,7 +3,7 @@ import { SupplierClientService } from "./supplier-client/SupplierClientService"
 import { ClientTypeEnum } from "./enums/client-type.enum"
 import { MVRecordActionEnum } from "./enums/mv-record-action.enum";
 import { InventoryLocationService } from "./inventory-location/inventoryLocationService";
-import { TaxService } from "./tax/TaxService";
+import { TaxService } from "./tax/taxService";
 import { DiscountService } from "./discount/discountService";
 import { SalesOrderService } from "./sales-order/salesOrderService";
 import { SalesOrderStatusEnum } from "./enums/sales-order-status.enum";
@@ -173,11 +173,11 @@ const entities = {
     discount: discount
 };
 
-salesOrder.getSalesOrderRequiredDataID(salesOrderRequiredData, entities).then(function(response){
+/*salesOrder.getSalesOrderRequiredDataID(salesOrderRequiredData, entities).then(function(response){
 
     salesOrder.insertOrUpdateSalesOrder(response,mvRecordActionInsert).then(function(response){
         console.log(response);
     });
-});
+});*/
 
 
